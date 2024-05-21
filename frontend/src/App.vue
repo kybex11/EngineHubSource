@@ -75,7 +75,7 @@ export default {
             if (!this.toggleNew) {
                 this.toggleNew = !this.toggleNew;
             } else {
-                this.selectProj = "";
+
                 const newProjData = {
                     name: this.newProjName,
                 };
@@ -85,6 +85,7 @@ export default {
                         console.log("Project created successfully: ", response);
                         this.projects.push(this.newProjName);
                         this.selectProject = this.newProjName;
+                        this.selectedProj = "";
                     })
                     .catch(error => {
                         console.error('Error creating project: ', error);
