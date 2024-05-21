@@ -50,7 +50,7 @@ func (a *App) ListProjects(basePath string) ([]string, error) {
 	return projects, nil
 }
 
-func CreateProject(projectName string, projectData map[string]interface{}) error {
+func (a *App) CreateProject(projectName string, projectData map[string]interface{}) error {
 	projectPath := filepath.Join("projects", projectName)
 	os.MkdirAll(projectPath, os.ModePerm)
 

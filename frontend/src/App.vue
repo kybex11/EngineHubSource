@@ -11,7 +11,13 @@
             </ul> 
         </div>
         <div class="ProjectsView" v-else>
-            <h1>Create Project</h1>
+            <br>
+            <h2 class="CP">Create Project</h2>
+            <br>
+            <input type="text" v-model="newProjName" class="project-input" placeholder="Name of proj">
+            <br>
+            <button class="ProjectsViewSubmitButtonContainerClass" @click="createProject">Ok</button>
+            <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
         </div>
         <br>
         <div class="ProjectsViewEdit">
@@ -30,6 +36,7 @@ import { ListProjects, DeleteProject, CreateProject } from '/wailsjs/go/main/App
 export default {
     data() {
         return {
+            newProjName: '',
             createProjectContainerView: false,
             editProjectContainerView: false,
             deleteProjectContainerView: false,
@@ -49,6 +56,9 @@ export default {
         openProject() {
             console.log("open project");
         },
+        cancelCreateProject() {
+            this.toggleNew = !this.toggleNew;
+        },
         getProjects() {
             ListProjects("projects")
                 .then(response => {
@@ -62,6 +72,27 @@ export default {
             console.log("get projects");
         },
         createProject() {
+            if (!this.toggleNew) {
+                this.toggleNew = !this.toggleNew;
+            } else {
+                this.selectProj = "";
+                const newProjData = {
+                    name: this.newProjName,
+                };
+
+                CreateProject(this.newProjName, newProjData)
+                    .then(response => {
+                        console.log("Project created successfully: ", response);
+                        this.projects.push(this.newProjName);
+                        this.selectProject = this.newProjName;
+                    })
+                    .catch(error => {
+                        console.error('Error creating project: ', error);
+                    })
+
+                this.toggleNew = !this.toggleNew;
+                this.getProjects();
+            }
             console.log("create project");
         },
         editProject() {
