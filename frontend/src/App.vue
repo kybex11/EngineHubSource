@@ -84,7 +84,6 @@ export default {
                     .then(response => {
                         console.log("Project created successfully: ", response);
                         this.projects.push(this.newProjName);
-                        this.selectProject = this.newProjName;
                         this.selectedProj = "";
                     })
                     .catch(error => {
