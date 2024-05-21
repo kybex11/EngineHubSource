@@ -1,0 +1,71 @@
+body {
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #21262e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    font-size: small;
+    color: white;
+}
+
+.ProjectSelector h1 {
+    color: white;
+}
+
+.ProjectSelector {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ProjectContainButton {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1rem;
+}
+
+.ProjectsView {
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 300px;
+}
+
+.ProjectsView button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: large;
+}
+
+.ProjectsView li {
+    list-style-type: none;
+}
+
+.ProjectsViewEdit {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.ProjectsViewEdit button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 15px;
+    font-size: large;
+}
