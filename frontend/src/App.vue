@@ -19,7 +19,7 @@
             <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
         </div>
         <br>
-        <div class="ProjectsViewEdit" v-if="!toggleNew && !engine">
+        <div class="ProjectsViewEdit" v-if="!toggleNew && !engineUsed">
             <button @click="createProject">Create</button>
             <button @click="editProject">Edit</button>
             <button @click="openProject">Open</button>
