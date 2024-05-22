@@ -1,8 +1,7 @@
 <template>
     <div class="ProjectSelector">
-        <h1>Select Project</h1>
-        <br>
-        <div class="ProjectsView" v-if="!toggleNew">
+        <h1 v-if="!toggleNew && !engineUsed">Select Project</h1>
+        <div class="ProjectsView" v-if="!toggleNew && !engineUsed">
             <h3>Selected: {{ selectedProj }} <button @click="selectProject()">Unselect</button></h3>
             <ul>
                 <li v-for="project in projects" :key="project">
@@ -10,7 +9,7 @@
                 </li>
             </ul> 
         </div>
-        <div class="ProjectsView" v-else>
+        <div class="ProjectsView" v-if="toggleNew">
             <br>
             <h2 class="CP">Create Project</h2>
             <br>
@@ -20,7 +19,7 @@
             <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
         </div>
         <br>
-        <div class="ProjectsViewEdit">
+        <div class="ProjectsViewEdit" v-if="!toggleNew && !engine">
             <button @click="createProject">Create</button>
             <button @click="editProject">Edit</button>
             <button @click="openProject">Open</button>
@@ -28,12 +27,17 @@
             <button @click="deleteProject">Delete</button>
         </div>
     </div>
+    <div class="EngineView" v-if="engineUsed">
+        <EngineView/>
+    </div>
 </template>
 
 <script>
+import EngineView from './components/EngineView.vue'
 import { ListProjects, DeleteProject, CreateProject } from '/wailsjs/go/main/App';
 
 export default {
+	components: { EngineView },
     data() {
         return {
             newProjName: '',
@@ -44,6 +48,7 @@ export default {
             projects: [],
             toggleNew: false,
             selectedProj: "",
+            engineUsed: false,
         }
     },
     mounted() {
@@ -54,7 +59,13 @@ export default {
             this.selectedProj = project;
         },
         openProject() {
-            console.log("open project");
+            if (this.selectedProj !== "") {
+                this.engineUsed = !this.engineUsed;
+                console.log("open project");
+            } else {
+                console.log("failing open project");
+            }
+
         },
         cancelCreateProject() {
             this.toggleNew = !this.toggleNew;
