@@ -14,6 +14,9 @@
             <h2 class="CP">Create Project</h2>
             <br>
             <input type="text" v-model="newProjName" class="project-input" placeholder="Name of proj">
+            <br><br>
+            <button class="SelectModeButton" @click="selectMode('2d')">2D</button>
+            <button class="SelectModeButton" @click="selectMode('3d')">3D</button>
             <br>
             <button class="ProjectsViewSubmitButtonContainerClass" @click="createProject">Ok</button>
             <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
@@ -28,7 +31,7 @@
         </div>
     </div>
     <div class="EngineView" v-if="engineUsed">
-        <EngineView :projectData="selectedProj"/>
+        <EngineView :projectData="selectedProjComplect"/>
     </div>
 </template>
 
@@ -45,9 +48,16 @@ export default {
             editProjectContainerView: false,
             deleteProjectContainerView: false,
             openProjectContainerView: false,
-            projects: [],
-            toggleNew: false,
             selectedProj: "",
+            selectedProjMode: "",
+            projects: [],
+            selectedProjComplect: {
+                name: this.selectedProj,
+                mode: this.selectedProjMode,
+            },
+            
+            toggleNew: false,
+
             engineUsed: false,
         }
     },
@@ -55,6 +65,9 @@ export default {
         this.getProjects();
     },
     methods: {
+        selectMode(mode) {
+            this.selectedProjMode = mode;
+        },
         selectProject(project) {
             this.selectedProj = project;
         },
@@ -83,8 +96,8 @@ export default {
             console.log("get projects");
         },
         createProject() {
-        if (this.newProjName.length <= 1) {
-            console.log("Error creating project: length of project soo small")
+        if (this.newProjName.length <= 1 && this.selectedProjMode) {
+            console.log("Error creating project: length of project soo small or mode not selected")
         } else {
 
             if (!this.toggleNew) {
