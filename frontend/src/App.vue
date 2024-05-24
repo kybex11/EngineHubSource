@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="EngineView" v-if="engineUsed">
-        <EngineView/>
+        <EngineView :projectData="selectedProj"/>
     </div>
 </template>
 
