@@ -83,6 +83,10 @@ export default {
             console.log("get projects");
         },
         createProject() {
+        if (this.newProjName.length <= 1) {
+            console.log("Error creating project: length of project soo small")
+        } else {
+
             if (!this.toggleNew) {
                 this.toggleNew = !this.toggleNew;
             } else {
@@ -104,6 +108,8 @@ export default {
                 this.toggleNew = !this.toggleNew;
                 this.getProjects();
             }
+        }
+            
             console.log("create project");
         },
         editProject() {
