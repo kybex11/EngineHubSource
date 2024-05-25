@@ -65,7 +65,9 @@ export default {
             this.selectedProjMode = mode;
         },
         selectProject(project) {
-            this.selectedProj = project;
+            const parts = project.split('_'); // Assuming the separator is '_'
+            this.selectedProj = parts[0]; // Assign the name part
+            this.selectedProjMode = parts[1]; // Assign the mode part
         },
         openProject() {
             if (this.selectedProj !== "") {
