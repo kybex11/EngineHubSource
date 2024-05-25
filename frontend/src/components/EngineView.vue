@@ -13,6 +13,7 @@
             
         </div>
     <h1>{{ projectData }}</h1>
+    <h1>{{ projectMode }}</h1>
     </div>
 </template>
 
@@ -20,6 +21,10 @@
 export default {
     props: {
         projectData: {
+            type: Object,
+            required: true
+        },
+        projectMode: {
             type: Object,
             required: true
         }

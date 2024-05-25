@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="EngineView" v-if="engineUsed">
-        <EngineView :projectData="selectedProj"/>
+        <EngineView :projectData="selectedProj" :projectMode="selectedProjMode"/>
     </div>
 </template>
 
