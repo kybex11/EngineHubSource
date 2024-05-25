@@ -16,7 +16,7 @@
             <input type="text" v-model="newProjName" class="project-input" placeholder="Name of proj">
             <br><br>
             <button class="SelectModeButton" @click="selectMode('2d')">2D</button>
-            <button class="SelectMod" @click="selectMode('3d')">3D</button>
+            <button class="SelectModeButton" @click="selectMode('3d')">3D</button>
             <br>
             <button class="ProjectsViewSubmitButtonContainerClass" @click="createProject">Ok</button>
             <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
@@ -102,6 +102,7 @@ export default {
 
                 const newProjData = {
                     name: this.newProjName,
+                    mode: this.selectedProjMode,
                 };
 
                 CreateProject(this.newProjName, newProjData)

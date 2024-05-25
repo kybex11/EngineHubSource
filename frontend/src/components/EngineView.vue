@@ -9,6 +9,9 @@
         <button>Actor</button>
     </div>
     <div class="">
+        <div class="ScenePortal">
+            
+        </div>
     <h1>{{ projectData }}</h1>
     </div>
 </template>
