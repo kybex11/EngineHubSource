@@ -57,7 +57,7 @@ export default {
             engineUsed: false,
         }
     },
-    mounted() {
+    mounted() {//
         this.getProjects();
     },
     methods: {
