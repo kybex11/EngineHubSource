@@ -99,7 +99,7 @@ export default {
 
             if (!this.toggleNew) {
                 this.toggleNew = !this.toggleNew;
-            } else {
+            } else { 
 
                 const newProjData = {
                     name: `${this.selectedProjMode}${this.newProjName}`,
