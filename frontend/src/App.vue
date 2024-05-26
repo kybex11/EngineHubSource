@@ -5,7 +5,7 @@
             <h3>Selected: {{ selectedProj }} <button @click="selectProject()">Unselect</button></h3>
             <ul>
                 <li v-for="project in projects" :key="project">
-                    <button class="ProjectContainButton" @click="selectProject(project)">{{ project }}</button>
+                    <button class="ProjectContainButton" @click="selectProject(project)">{{ project.substring(2) }}</button>
                 </li>
             </ul> 
         </div>
