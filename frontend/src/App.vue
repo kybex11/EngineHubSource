@@ -105,7 +105,7 @@ export default {
                     name: `${this.selectedProjMode}${this.newProjName}`,
                 };
 
-                CreateProject(this.newProjName, newProjData)
+                CreateProject(`${this.newProjName}${this.selectedProjMode}`, newProjData)
                     .then(response => {
                         console.log("Project created successfully: ", response);
                         this.projects.push(this.newProjName);
