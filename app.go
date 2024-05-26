@@ -10,7 +10,6 @@ import (
 
 type Project struct {
 	Name string `json:"name"`
-	Mode string `json:"mode"`
 }
 type App struct {
 	ctx context.Context
@@ -39,7 +38,7 @@ func (a *App) ListProjects(basePath string) ([]string, error) {
 			if err := json.Unmarshal(file, &project); err != nil {
 				return err
 			}
-			projects = append(projects, project.Name, project.Mode)
+			projects = append(projects, project.Name)
 		}
 		return nil
 	})

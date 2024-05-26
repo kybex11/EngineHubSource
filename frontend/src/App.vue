@@ -102,8 +102,7 @@ export default {
             } else {
 
                 const newProjData = {
-                    name: this.newProjName,
-                    mode: this.selectedProjMode,
+                    name: `${this.selectedProjMode}${this.newProjName}`,
                 };
 
                 CreateProject(this.newProjName, newProjData)
