@@ -17,6 +17,7 @@ type ActivityConfig struct {
 	Details string `json:"details"`
 }
 
+//go:embed frontend/dist/*
 var assets embed.FS
 
 func main() {
