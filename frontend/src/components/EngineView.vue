@@ -17,9 +17,6 @@
                 <tree/>
             </div>
         </div>
-    <h1>{{ projectData }}</h1>
-    <br>
-    <h1>{{ projectMode }}</h1>
     </div>
 </template>
 
