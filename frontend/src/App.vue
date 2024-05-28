@@ -50,6 +50,7 @@ export default {
             openProjectContainerView: false,
             selectedProj: "",
             selectedProjMode: "",
+            projectStokeName: "",
             projects: [],
             
             toggleNew: false,
@@ -65,6 +66,7 @@ export default {
             this.selectedProjMode = mode;
         },
         selectProject(project) {
+            this.projectStokeName = project;
             this.selectedProjMode = project.substring(0, 2); // Получить первые два символа
             this.selectedProj = project.substring(2); // Получить оставшуюся часть строки
         },
@@ -129,7 +131,7 @@ export default {
             if (this.selectedProj) {
                 // Убедитесь, что selectedProj не содержит расширения .json
                 const projectName = this.selectedProj.replace('.json', '');
-                const filePath = `projects/${projectName}/${projectName}.json`;
+                const filePath = `projects/${this.projectStokeName}/${this.projectStokeName}.json`;
                 DeleteProject(filePath)
                     .then(response => {
                         console.log("Project deleted successfully:", response);
