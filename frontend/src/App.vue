@@ -66,9 +66,15 @@ export default {
             this.selectedProjMode = mode;
         },
         selectProject(project) {
-            this.projectStokeName = project;
-            this.selectedProjMode = project.substring(0, 2); // Получить первые два символа
-            this.selectedProj = project.substring(2); // Получить оставшуюся часть строки
+            if (project) {
+                this.projectStokeName = project;
+                this.selectedProjMode = project.substring(0, 2); // Получить первые два символа
+                this.selectedProj = project.substring(2); // Получить оставшуюся часть строки
+            } else {
+                this.projectStrokeName = "";
+                this.selectedProjMode = "";
+                this.selectedProj = "";
+            }
         },
         openProject() {
             if (this.selectedProj !== "") {
@@ -135,6 +141,9 @@ export default {
                 DeleteProject(filePath)
                     .then(response => {
                         console.log("Project deleted successfully:", response);
+                        this.projectStrokeName = "";
+                        this.selectedProjMode = "";
+                        this.selectedProj = "";
                         this.getProjects(); // Обновить список проектов после удаления
                     })
                     .catch(error => {
