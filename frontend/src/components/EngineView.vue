@@ -10,7 +10,12 @@
     </div>
     <div class="">
         <div class="ScenePortal">
-            
+            <div  v-if="projectMode === '2d'">
+                <two/>
+            </div>
+            <div v-else>
+                <tree/>
+            </div>
         </div>
     <h1>{{ projectData }}</h1>
     <br>
@@ -19,7 +24,10 @@
 </template>
 
 <script>
+import two from './scenes/two.vue'
+import tree from './scenes/tree.vue'
 export default {
+    components: { two, tree },
     props: {
         projectData: {
             type: Object,
