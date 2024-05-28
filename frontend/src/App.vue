@@ -111,7 +111,7 @@ export default {
                     };
 
                     if (this.selectedProjMode || this.newProjName.length <= 1) {
-                        CreateProject(`${this.projectStokeName}${this.projectStokeName}`, newProjData)
+                        CreateProject(`${this.newProjName}${this.newProjName}`, newProjData)
                             .then(response => {
                                 console.log("Project created successfully: ", response);
                                 this.projects.push(this.newProjName);
