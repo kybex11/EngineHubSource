@@ -5,9 +5,10 @@
             <h3>Selected: {{ selectedProj }} <button @click="selectProject()">Unselect</button></h3>
             <ul>
                 <li v-for="project in projects" :key="project">
-                    <button class="ProjectContainButton" @click="selectProject(project)">{{ project.substring(2) }}</button>
+                    <button class="ProjectContainButton" @click="selectProject(project)">{{ project.substring(2)
+                        }}</button>
                 </li>
-            </ul> 
+            </ul>
         </div>
         <div class="ProjectsView" v-if="toggleNew">
             <br>
@@ -31,7 +32,7 @@
         </div>
     </div>
     <div class="EngineView" v-if="engineUsed">
-        <EngineView :projectData="selectedProj" :projectMode="selectedProjMode"/>
+        <EngineView :projectData="selectedProj" :projectMode="selectedProjMode" />
     </div>
 </template>
 
@@ -40,7 +41,7 @@ import EngineView from './components/EngineView.vue'
 import { ListProjects, DeleteProject, CreateProject } from '/wailsjs/go/main/App';
 
 export default {
-	components: { EngineView },
+    components: { EngineView },
     data() {
         return {
             newProjName: '',
@@ -52,7 +53,7 @@ export default {
             selectedProjMode: "",
             projectStokeName: "",
             projects: [],
-            
+
             toggleNew: false,
 
             engineUsed: false,
@@ -91,43 +92,41 @@ export default {
         getProjects() {
             ListProjects("projects")
                 .then(response => {
-                  console.log("Received data:", response);
-                  this.projects = response;
+                    console.log("Received data:", response);
+                    this.projects = response;
                 })
                 .catch(error => {
-                  console.error('Error fetching projects:', error);
+                    console.error('Error fetching projects:', error);
                 })
 
             console.log("get projects");
         },
         createProject() {
-        if (this.newProjName.length <= 1 && this.selectedProjMode) {
-            console.log("Error creating project: length of project soo small or mode not selected")
-        } else {
+                if (!this.toggleNew) {
+                    this.toggleNew = !this.toggleNew;
+                } else {
 
-            if (!this.toggleNew) {
-                this.toggleNew = !this.toggleNew;
-            } else { 
+                    const newProjData = {
+                        name: `${this.selectedProjMode}${this.newProjName}`,
+                    };
 
-                const newProjData = {
-                    name: `${this.selectedProjMode}${this.newProjName}`,
-                };
+                    if (this.selectedProjMode || this.newProjName.length <= 1) {
+                        CreateProject(`${this.projectStokeName}${this.projectStokeName}`, newProjData)
+                            .then(response => {
+                                console.log("Project created successfully: ", response);
+                                this.projects.push(this.newProjName);
+                                this.selectedProj = "";
+                            })
+                            .catch(error => {
+                                console.error('Error creating project: ', error);
+                            })
+                        this.toggleNew = !this.toggleNew;
+                        this.getProjects();
+                    } else {
+                        console.log("Error creating project");
+                    }
+                }
 
-                CreateProject(`${this.selectedProjMode}${this.newProjName}`, newProjData)
-                    .then(response => {
-                        console.log("Project created successfully: ", response);
-                        this.projects.push(this.newProjName);
-                        this.selectedProj = "";
-                    })
-                    .catch(error => {
-                        console.error('Error creating project: ', error);
-                    })
-
-                this.toggleNew = !this.toggleNew;
-                this.getProjects();
-            }
-        }
-            
             console.log("create project");
         },
         editProject() {
