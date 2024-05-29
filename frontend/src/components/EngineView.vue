@@ -13,7 +13,7 @@
             <div  v-if="projectMode === '2d'">
                 <two/>
             </div>
-            <div v-else>
+            <div v-if="projectMode === '3d'">
                 <tree/>
             </div>
         </div>
