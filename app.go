@@ -72,8 +72,16 @@ func (a *App) CreateProject(projectName string, projectData map[string]interface
 		return err
 	}
 
+	sceneFilePath := filepath.Join(projectPath, "scenes", "mainScene.scene")
+	sceneFile, err := os.Create(sceneFilePath)
+	if err != nil {
+		return err
+	}
+	defer sceneFile.Close()
+
 	return nil
 }
+
 func (a *App) DeleteProject(basePath, projectName string) error {
 	filePath := filepath.Join(basePath, projectName)
 	err := os.Remove(filePath)
