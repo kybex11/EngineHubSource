@@ -84,13 +84,12 @@ func (a *App) CreateProject(projectName string, projectData map[string]interface
 
 func (a *App) DeleteProject(basePath, projectName string) error {
 	filePath := filepath.Join(basePath, projectName)
-	err := os.Remove(filePath)
+	err := os.RemoveAll(filePath)
 	if err != nil {
 		return err
 	}
 
-	dirPath := filepath.Dir(filePath)
-	return os.Remove(dirPath)
+	return nil
 }
 
 func (a *App) ReadScenes(projectName string) ([]string, error) {

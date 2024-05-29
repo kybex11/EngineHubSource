@@ -134,9 +134,7 @@ export default {
         },
         deleteProject() {
             if (this.selectedProj) {
-                // Убедитесь, что selectedProj не содержит расширения .json
-                const projectName = this.selectedProj.replace('.json', '');
-                const filePath = `projects/${this.projectStokeName}/${this.projectStokeName}.json`;
+                const filePath = `projects/${this.selectedProj}${this.selectedProj}`;
                 DeleteProject(filePath)
                     .then(response => {
                         console.log("Project deleted successfully:", response);
