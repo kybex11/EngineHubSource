@@ -51,7 +51,14 @@ func (a *App) ListProjects(basePath string) ([]string, error) {
 
 func (a *App) CreateProject(projectName string, projectData map[string]interface{}) error {
 	projectPath := filepath.Join("projects", projectName)
-	os.MkdirAll(projectPath, os.ModePerm)
+	err := os.MkdirAll(filepath.Join(projectPath, "resources"), os.ModePerm)
+	if err != nil {
+		return err
+	}
+	err = os.MkdirAll(filepath.Join(projectPath, "scenes"), os.ModePerm)
+	if err != nil {
+		return err
+	}
 
 	filePath := filepath.Join(projectPath, projectName+".json")
 	file, err := os.Create(filePath)
@@ -67,7 +74,6 @@ func (a *App) CreateProject(projectName string, projectData map[string]interface
 
 	return nil
 }
-
 func (a *App) DeleteProject(basePath, projectName string) error {
 	filePath := filepath.Join(basePath, projectName)
 	err := os.Remove(filePath)
@@ -77,4 +83,25 @@ func (a *App) DeleteProject(basePath, projectName string) error {
 
 	dirPath := filepath.Dir(filePath)
 	return os.Remove(dirPath)
+}
+
+func (a *App) ReadScenes(projectName string) ([]string, error) {
+	scenesPath := filepath.Join("projects", projectName, "scenes")
+	var scenes []string
+
+	err := filepath.Walk(scenesPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() && filepath.Ext(path) == ".json" {
+			scenes = append(scenes, path)
+		}
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return scenes, nil
 }

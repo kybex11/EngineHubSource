@@ -6,3 +6,5 @@ export function CreateProject(arg1:string,arg2:{[key: string]: any}):Promise<voi
 export function DeleteProject(arg1:string,arg2:string):Promise<void>;
 
 export function ListProjects(arg1:string):Promise<Array<string>>;
+
+export function ReadScenes(arg1:string):Promise<Array<string>>;

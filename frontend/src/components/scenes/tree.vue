@@ -7,8 +7,6 @@
   
   export default {
     mounted() {
-        this.$refs.container.style.width = '500px';
-        this.$refs.container.style.height = '600px';
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);

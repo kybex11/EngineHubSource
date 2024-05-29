@@ -13,3 +13,7 @@ export function DeleteProject(arg1, arg2) {
 export function ListProjects(arg1) {
   return window['go']['main']['App']['ListProjects'](arg1);
 }
+
+export function ReadScenes(arg1) {
+  return window['go']['main']['App']['ReadScenes'](arg1);
+}
