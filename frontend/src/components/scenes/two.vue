@@ -3,14 +3,14 @@
         <div class="objects"></div>
         <div class="content-browser"></div>
         <div class="inspector"></div>
-        <canvas ref="myCanvas" width="200" height="200"></canvas>
+        <canvas ref="scene" width="200" height="200"></canvas>
     </div>
 </template>
 
 <script>
 export default {
     mounted() {
-        const canvas = this.$refs.myCanvas;
+        const canvas = this.$refs.scene;
         const ctx = canvas.getContext('2d');
 
         ctx.fillStyle = 'black';
