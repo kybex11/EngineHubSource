@@ -1,14 +1,19 @@
 <template>
     <div>
-        <canvas ref="scene" width="200" height="200"></canvas>
+        <canvas ref="myCanvas" width="200" height="200"></canvas>
     </div>
 </template>
 
 <script>
 export default {
     mounted() {
-        const canvas = this.$refs.scene;
+        const canvas = this.$refs.myCanvas;
         const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = 'white';
 
         ctx.beginPath();
         ctx.arc(100, 100, 50, 0, 2 * Math.PI);
