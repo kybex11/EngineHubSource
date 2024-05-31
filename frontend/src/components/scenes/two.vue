@@ -3,7 +3,7 @@
         <div class="objects"></div>
         <div class="content-browser"></div>
         <div class="inspector"></div>
-        <canvas ref="scene" width="200" height="200"></canvas>
+        <canvas ref="scene" width="600" height="500"></canvas>
     </div>
 </template>
 
