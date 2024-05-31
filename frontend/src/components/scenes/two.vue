@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="objects"></div>
+        <div class="content-browser"></div>
+        <div class="inspector"></div>
         <canvas ref="myCanvas" width="200" height="200"></canvas>
     </div>
 </template>
