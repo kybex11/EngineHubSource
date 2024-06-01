@@ -1,15 +1,25 @@
 <template>
     <div>
         <div class="objects"></div>
-        <div class="content-browser"></div>
+        <div class="content-browser"></div>.
         <div class="inspector"></div>
         <canvas ref="scene" width="600" height="500"></canvas>
     </div>
 </template>
 
 <script>
+import { ReadScenes } from '../../../wailsjs/go/main/App';
+
 export default {
+    props: {
+        projectName: {
+            type: Object,
+            required: true
+        },
+    },
     mounted() {
+        //ReadScenes()
+
         const canvas = this.$refs.scene;
         const ctx = canvas.getContext('2d');
 

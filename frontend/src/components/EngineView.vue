@@ -2,7 +2,7 @@
     <div class="">
         <div class="ScenePortal">
             <div  v-if="projectMode === '2d'">
-                <two/>
+                <two :projectName="projectData"/>
             </div>
             <div v-if="projectMode === '3d'">
                 <tree/>

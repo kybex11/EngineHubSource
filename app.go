@@ -100,7 +100,7 @@ func (a *App) ReadScenes(projectName string) ([]string, error) {
 		if err != nil {
 			return err
 		}
-		if !info.IsDir() && filepath.Ext(path) == ".json" {
+		if !info.IsDir() && filepath.Ext(path) == ".scene" {
 			scenes = append(scenes, path)
 		}
 		return nil
