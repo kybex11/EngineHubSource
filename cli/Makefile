@@ -1,2 +1,2 @@
 run/build
-	@go run ./cmd/build.go
+	@go run ./cmd/build/build.go
