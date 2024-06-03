@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Building project...")
+	projectName := flag.String("projectName", "", "Specify the project name")
+	flag.Parse()
+
+	fmt.Printf("Building project %s...\n", *projectName)
 }
