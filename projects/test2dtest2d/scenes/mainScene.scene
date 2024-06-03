@@ -1,1 +1,5 @@
-mainSceneDrawCircle()
+drawCirclecircle1
+    color(white)
+    posX(300)
+    posY(300)
+    radius(100)

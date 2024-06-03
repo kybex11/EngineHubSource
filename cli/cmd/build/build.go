@@ -11,6 +11,8 @@ func main() {
 	projectName := flag.String("projectName", "", "Specify the project name")
 	flag.Parse()
 
+	fmt.Println("Creating application V2...")
+
 	cmd := exec.Command("cmd", "/C", "cd ./ && cd ../builder/ && wails init -n "+*projectName+" -t vue")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -20,6 +22,7 @@ func main() {
 	}
 
 	fmt.Printf("Building project %s...\n", *projectName)
+
 }
 
 //wails build
