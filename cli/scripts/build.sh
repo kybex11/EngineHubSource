@@ -1,1 +1,1 @@
-go build ./cmd/build
+go build ../cmd/build

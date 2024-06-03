@@ -1,1 +1,1 @@
-./cmd/build
+../cmd/build
