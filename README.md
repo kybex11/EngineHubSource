@@ -1,5 +1,11 @@
 # README
 
+## For use the engine hub you need
+Golang -latest version
+Wails.io -latest version
+Node/Npm -latest version
+Make not required
+
 ## About
 
 This is the official Wails Vue template.
