@@ -11,3 +11,6 @@ func main() {
 
 	fmt.Printf("Building project %s...\n", *projectName)
 }
+
+//wails init -n projectName -t vue-ts
+//wails build
