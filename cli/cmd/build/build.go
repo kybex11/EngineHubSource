@@ -20,9 +20,24 @@ func main() {
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
+	fmt.Println("Cloning project %s...\n", *projectName)
 
+	cmd2 := exec.Command("cmd", "/C", "Copy-Item -Path ../../../projects/"+*projectName+" -Destination ../builder/ -Recurse -Force")
+	cmd2.Stdout = os.Stdout
+	cmd2.Stderr = os.Stderr
+	err2 := cmd2.Run()
+	if err2 != nil {
+		fmt.Println("Error:", err2)
+	}
+	fmt.Println("Project cloned successfully")
 	fmt.Printf("Building project %s...\n", *projectName)
 
-}
+	cmd3 := exec.Command("cmd", "/C", "cd ./ && cd ../builder/ && wails build")
+	cmd3.Stdout = os.Stdout
+	cmd3.Stderr = os.Stderr
+	err3 := cmd3.Run()
+	if err3 != nil {
+		fmt.Println("Error:", err3)
+	}
 
-//wails build
+}
