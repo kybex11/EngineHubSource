@@ -30,38 +30,42 @@ export default {
                     this.sceneContent = response;
                     console.log(response);
 
-                    const lines = response.split("\n"); // Split input into lines
-                    const action = lines[0].substring(0, 10).trim(); // Extract the action
-                    const name = lines[0].substring(10).trim(); // Extract the name
+                    const lines = response.split("\n");
+                    const action = lines[0].substring(0, 10).trim(); 
+                    const name = lines[0].substring(10).trim();
 
                     const args = lines.slice(1).map(arg => {
                         const [key, value] = arg.split("(").map(item => item.trim().replace(/[()]/g, ""));
                         return { key, value };
                     });
 
-                    console.log("Action:", action);
-                    console.log("Name:", name);
-                    console.log("Arguments:");
-                    args.forEach(arg => {
-                        console.log(`const ${arg.key} = ${arg.value}`);
-                    });
+                    if (action == "drawCircle") {
+                        console.log("Action:", action);
+                        console.log("Name:", name);
+                        console.log("Arguments:");
+                        args.forEach(arg => {
+                            console.log(`const ${arg.key} = ${arg.value}`);
+                        });
+                    
+                        const argumentsObject = {};
+                        args.forEach(arg => {
+                            argumentsObject[arg.key] = arg.value;
+                        });
+                    
+                        const { color, posX, posY, radius } = argumentsObject;
+                    
+                        const canvas = this.$refs.scene;
+                        const ctx = canvas.getContext('2d');
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                        ctx.strokeStyle = color;
+                        ctx.beginPath();
+                        ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
+                        ctx.stroke();
+                    }
 
-                    const argumentsObject = {};
-                    args.forEach(arg => {
-                        argumentsObject[arg.key] = arg.value;
-                    });
-
-                    const { color, posX, posY, radius } = argumentsObject;
-
-                    const canvas = this.$refs.scene;
-                    const ctx = canvas.getContext('2d');
-                    ctx.fillStyle = 'black';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                    ctx.strokeStyle = color;
-                    ctx.beginPath();
-                    ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
-                    ctx.stroke();
+                    
                 } else {
                     console.error("Empty response received");
                 }

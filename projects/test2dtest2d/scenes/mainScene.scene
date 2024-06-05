@@ -1,4 +1,4 @@
-drawCirclecircle1
+drawCircle circle1
     color(white)
     posX(300)
     posY(300)
