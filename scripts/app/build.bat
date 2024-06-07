@@ -1,2 +1,3 @@
 cd ../../
 wails build
+pause
