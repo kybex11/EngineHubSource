@@ -28,7 +28,7 @@ To build a redistributable, production mode package, use `wails build`.
 
 On dev you see a toolbox(entire) menu. the menu hidden on build!
 
-## For build the project use:
+# For build the project use:
 
-# EngineHubBuilder -projectName="projectNameHere" -path="/users/example/Desktop/exampleApp" 
+## EngineHubBuilder -projectName="projectNameHere" -path="/users/example/Desktop/exampleApp" 
 We Starting from C:/
