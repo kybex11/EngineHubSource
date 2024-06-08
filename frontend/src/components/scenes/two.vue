@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ReadScenes } from '../../../wailsjs/go/main/App';
+import { ReadScenes, CreateObject } from '../../../wailsjs/go/main/App';
 
 export default {
     data() {
@@ -73,6 +73,17 @@ export default {
             .catch(error => {
                 console.error("Error reading scene file:", error);
             });
+    },
+    methods: {
+        createObj(objName, objData) {
+            CreateObject(objName, objData, this.projectName)
+                .then(response => {
+                    console.log(respnose);
+                })
+                .catch(e => {
+                    console.error("Error creating object:",e);
+                });
+        }
     }
 }
 </script>

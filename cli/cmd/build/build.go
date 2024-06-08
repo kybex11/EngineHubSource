@@ -68,5 +68,5 @@ func main() {
 		fmt.Println("Error:", err4)
 		return
 	}
-	fmt.Println("Project build successfully.")
+	fmt.Println("Project build ended")
 }

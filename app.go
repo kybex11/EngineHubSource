@@ -55,6 +55,7 @@ func (a *App) CreateProject(projectName string, projectData map[string]interface
 	if err != nil {
 		return err
 	}
+
 	err = os.MkdirAll(filepath.Join(projectPath, "scenes"), os.ModePerm)
 	if err != nil {
 		return err
@@ -92,11 +93,16 @@ func (a *App) DeleteProject(basePath, projectName string) error {
 	return nil
 }
 
-func (a *App) ReadScenes(projectName string) (string, error) {
-	sceneFilePath := filepath.Join("projects", projectName, "scenes", "mainScene.scene")
+func (a *App) ReadScenes(projectName string, sceneName string) (string, error) {
+	sceneFilePath := filepath.Join("projects", projectName, "scenes", sceneName)
 	sceneFile, err := os.ReadFile(sceneFilePath)
 	if err != nil {
 		return "", err
 	}
 	return string(sceneFile), nil
+}
+
+func (a *App) CreateObject(objectName string, objectData string, projectName string) (string, error) {
+	fmt.Println("Creating object...")
+	return "", nil
 }
