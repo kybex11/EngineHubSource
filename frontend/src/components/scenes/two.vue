@@ -23,7 +23,7 @@ export default {
         },
     },
     mounted() {
-        ReadScenes(`${this.projectName}${this.projectName}`)
+        ReadScenes(`${this.projectName}${this.projectName}`, "mainScene.scene")
             .then(response => {
                 console.log("reading scene file");
                 if (response) {

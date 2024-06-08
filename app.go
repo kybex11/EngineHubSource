@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -50,6 +51,10 @@ func (a *App) ListProjects(basePath string) ([]string, error) {
 }
 
 func (a *App) CreateProject(projectName string, projectData map[string]interface{}) error {
+	if len(projectName) < 1 {
+		return errors.New("Project name must be at least 1 character long")
+	}
+
 	projectPath := filepath.Join("projects", projectName)
 	err := os.MkdirAll(filepath.Join(projectPath, "resources"), os.ModePerm)
 	if err != nil {
