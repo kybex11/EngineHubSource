@@ -21,3 +21,7 @@ export function ListProjects(arg1) {
 export function ReadScenes(arg1, arg2) {
   return window['go']['main']['App']['ReadScenes'](arg1, arg2);
 }
+
+export function RenameProject(arg1, arg2, arg3) {
+  return window['go']['main']['App']['RenameProject'](arg1, arg2, arg3);
+}

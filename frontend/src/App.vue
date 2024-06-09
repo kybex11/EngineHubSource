@@ -10,6 +10,12 @@
                 </li>
             </ul>
         </div>
+        <div class="ProjectsView" v-if="toggleEdit">
+            <br>
+            <h2 class="CP">Edit Project: {{selectedProj}}</h2>
+            <br>
+            <input type="text" v-model="newEditName" class="project-input" placeholder="New name for project">
+        </div>
         <div class="ProjectsView" v-if="toggleNew">
             <br>
             <h2 class="CP">Create Project</h2>
@@ -38,7 +44,7 @@
 
 <script>
 import EngineView from './components/EngineView.vue'
-import { ListProjects, DeleteProject, CreateProject } from '/wailsjs/go/main/App';
+import { ListProjects, DeleteProject, CreateProject, RenameProject } from '/wailsjs/go/main/App';
 
 export default {
     components: { EngineView },
@@ -49,9 +55,11 @@ export default {
             editProjectContainerView: false,
             deleteProjectContainerView: false,
             openProjectContainerView: false,
+            newEditName: "",
             selectedProj: "",
             selectedProjMode: "",
             projectStokeName: "",
+            toggleEdit: false,
             projects: [],
 
             toggleNew: false,
@@ -130,7 +138,8 @@ export default {
             console.log("create project");
         },
         editProject() {
-            console.log("edit project");
+            this.toggleEdit = !this.toggleEdit;
+            // coming soon;
         },
         deleteProject() {
             if (this.selectedProj) {

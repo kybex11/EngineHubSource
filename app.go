@@ -78,12 +78,17 @@ func (a *App) CreateProject(projectName string, projectData map[string]interface
 		return err
 	}
 
-	sceneFilePath := filepath.Join(projectPath, "scenes", "mainScene.scene")
+	sceneFilePath := filepath.Join(projectPath, "scenes", "cube.scene")
 	sceneFile, err := os.Create(sceneFilePath)
 	if err != nil {
 		return err
 	}
 	defer sceneFile.Close()
+
+	content := "coming soon..."
+	if _, err := sceneFile.WriteString(content); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -110,4 +115,22 @@ func (a *App) ReadScenes(projectName string, sceneName string) (string, error) {
 func (a *App) CreateObject(objectName string, objectData string, projectName string) (string, error) {
 	fmt.Println("Creating object...")
 	return "", nil
+}
+
+func (a *App) RenameProject(basePath, oldProjectName, newProjectName string) error {
+	// Rename project folder
+	oldPath := filepath.Join(basePath, oldProjectName)
+	newPath := filepath.Join(basePath, newProjectName)
+	if err := os.Rename(oldPath, newPath); err != nil {
+		return err
+	}
+
+	// Rename project JSON file
+	oldFilePath := filepath.Join(newPath, oldProjectName+".json")
+	newFilePath := filepath.Join(newPath, newProjectName+".json")
+	if err := os.Rename(oldFilePath, newFilePath); err != nil {
+		return err
+	}
+
+	return nil
 }

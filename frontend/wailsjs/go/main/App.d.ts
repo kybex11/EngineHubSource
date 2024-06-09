@@ -10,3 +10,5 @@ export function DeleteProject(arg1:string,arg2:string):Promise<void>;
 export function ListProjects(arg1:string):Promise<Array<string>>;
 
 export function ReadScenes(arg1:string,arg2:string):Promise<string>;
+
+export function RenameProject(arg1:string,arg2:string,arg3:string):Promise<void>;
