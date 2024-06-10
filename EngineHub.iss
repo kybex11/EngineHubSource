@@ -12,7 +12,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{43E0F124-5D6B-4E6A-9F3A-8256B7C89CC5}
+AppId={{C3A04FCA-4B27-4873-8AF9-704AB51BFA1E}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -37,7 +37,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "C:\Users\misha\Desktop\Projects\engine\build\bin\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\misha\Desktop\Projects\engine\build\bin\info.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\misha\Desktop\Projects\engine\build\bin\projects\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\misha\Desktop\Projects\engine\build\bin\projects\*"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
