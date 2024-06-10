@@ -17,7 +17,7 @@
             <input type="text" v-model="newEditName" class="project-input" placeholder="New name for project">
             <br><br>
             <button class="SelectModeButton" @click="editPrj">Edit</button>
-            <button class="SelectModeButton" @click="editProject"></button>
+            <button class="SelectModeButton" @click="editProject">Cancel</button>
         </div>
         <div class="ProjectsView" v-if="toggleNew">
             <br>
