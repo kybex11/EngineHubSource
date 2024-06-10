@@ -1,7 +1,7 @@
 <template>
     <div class="ProjectSelector">
-        <h1 v-if="!toggleNew && !engineUsed">Select Project</h1>
-        <div class="ProjectsView" v-if="!toggleNew && !engineUsed">
+        <h1 v-if="!toggleNew && !engineUsed && !toggleEdit">Select Project</h1>
+        <div class="ProjectsView" v-if="!toggleNew && !engineUsed && !toggleEdit">
             <h3>Selected: {{ selectedProj }} <button @click="selectProject()">Unselect</button></h3>
             <ul>
                 <li v-for="project in projects" :key="project">
@@ -15,6 +15,9 @@
             <h2 class="CP">Edit Project: {{selectedProj}}</h2>
             <br>
             <input type="text" v-model="newEditName" class="project-input" placeholder="New name for project">
+            <br><br>
+            <button class="SelectModeButton" @click="editPrj">Edit</button>
+            <button class="SelectModeButton" @click="editProject"></button>
         </div>
         <div class="ProjectsView" v-if="toggleNew">
             <br>
@@ -29,7 +32,7 @@
             <button class="ProjectsViewSubmitButtonContainerClass" @click="cancelCreateProject">Cancel</button>
         </div>
         <br>
-        <div class="ProjectsViewEdit" v-if="!toggleNew && !engineUsed">
+        <div class="ProjectsViewEdit" v-if="!toggleNew && !engineUsed && !toggleEdit">
             <button @click="createProject">Create</button>
             <button @click="editProject">Edit</button>
             <button @click="openProject">Open</button>
@@ -109,6 +112,18 @@ export default {
 
             console.log("get projects");
         },
+        editPrj() {
+            if (this.newEditName.length > 1) {
+                RenameProject("projects", this.selectedProj, this.newEditName)
+                    .then(response => {
+                        console.log("Received data:", response);
+                    })
+                    .catch(error => {
+                        console.error("Error:",error);
+                    })
+            }
+            
+        },
         createProject() {
                 if (!this.toggleNew) {
                     this.toggleNew = !this.toggleNew;
@@ -138,7 +153,12 @@ export default {
             console.log("create project");
         },
         editProject() {
-            this.toggleEdit = !this.toggleEdit;
+            if (this.selectedProj) {
+                this.toggleEdit = !this.toggleEdit;
+            } else {
+                console.log("Error. Project don't selected")
+            }
+            
             // coming soon;
         },
         deleteProject() {
