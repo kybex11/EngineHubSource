@@ -10,6 +10,7 @@ import (
 func main() {
 	projectSfName := flag.String("projectName", "", "Specify the project name")
 	tPath := flag.String("path", "C:", "Specify the path")
+	dPath := flag.String("destination", "C:", "Specify the project folder path")
 	flag.Parse()
 
 	projectName := *projectSfName + *projectSfName
@@ -36,7 +37,7 @@ func main() {
 	fmt.Println("Project created successfully")
 
 	fmt.Println("Cloning project...")
-	cmd2 := exec.Command("powershell", "/C", "Copy-Item", "-Path", "./../projects/"+projectName, "-Destination", ""+*tPath+"/builder/"+projectName, "-Recurse", "-Force")
+	cmd2 := exec.Command("powershell", "/C", "Copy-Item", "-Path", ""+*dPath+""+projectName, "-Destination", ""+*tPath+"/builder/"+projectName, "-Recurse", "-Force")
 	cmd2.Stdout = os.Stdout
 	cmd2.Stderr = os.Stderr
 	err2 := cmd2.Run()
