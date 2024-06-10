@@ -38,5 +38,5 @@ On dev you see a toolbox(entire) menu. the menu hidden on build!
 
 # For build the project use:
 
-## EngineHubBuilder -projectName="projectNameHere" -path="/users/example/Desktop/exampleApp" 
+## ./build.exe -projectName="test3" -path="./" -destination="C:/Users/exmaple/Desktop/Projects/engine/projects/"
 We Starting from C:/
