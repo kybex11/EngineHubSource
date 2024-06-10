@@ -7,8 +7,13 @@ Node/Npm -latest version
 Make not required
 
 First download golang - [here](https://go.dev/doc/install)
+
 And wails - [here](https://wails.io/docs/gettingstarted/installation)
+
 And node - [here](https://nodejs.org/en)
+
+# P.S The needed for `wails dev`. NOT FOR .exe BUILD
+
 ## About
 
 This is the official Wails Vue template.
