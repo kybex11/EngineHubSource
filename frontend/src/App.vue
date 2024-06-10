@@ -114,7 +114,7 @@ export default {
         },
         editPrj() {
             if (this.newEditName.length > 1) {
-                RenameProject("projects", this.selectedProj, this.newEditName)
+                RenameProject("projects", `${this.selectedProj}${this.selectedProj}`, `${this.newEditName}${this.newEditName}`)
                     .then(response => {
                         console.log("Received data:", response);
                     })
