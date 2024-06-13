@@ -103,7 +103,8 @@ func (a *App) DeleteProject(basePath, projectName string) error {
 	return nil
 }
 
-func (a *App) ReadScenes(projectName string) ([]string, error) {
+func (a *App) ReadScenes(projectName1 string) ([]string, error) {
+	projectName := projectName1 + projectName1
 	var scenes []string
 	scenesPath := filepath.Join("projects", projectName, "scenes")
 	err := filepath.Walk(scenesPath, func(path string, info os.FileInfo, err error) error {

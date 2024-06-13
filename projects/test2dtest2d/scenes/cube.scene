@@ -1,0 +1,5 @@
+drawCircle circle1()
+    color(white)
+    radius(50)
+    posX(100)
+    posY(100)
