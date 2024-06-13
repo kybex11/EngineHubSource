@@ -53,7 +53,7 @@ func main() {
 	cmd3 := exec.Command("wails", "build")
 	cmd3.Dir = "" + *tPath + "/builder/" + projectName
 	cmd3.Stdout = os.Stdout
-	cmd3.Stderr = os.Stderr
+	cmd3.Stderr = os.Stderrnm,
 	err3 := cmd3.Run()
 	if err3 != nil {
 		color.Red("Error:", err3)

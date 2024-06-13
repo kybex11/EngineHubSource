@@ -103,13 +103,26 @@ func (a *App) DeleteProject(basePath, projectName string) error {
 	return nil
 }
 
-func (a *App) ReadScenes(projectName string, sceneName string) (string, error) {
-	sceneFilePath := filepath.Join("projects", projectName, "scenes", sceneName)
-	sceneFile, err := os.ReadFile(sceneFilePath)
+func (a *App) ReadScenes(projectName string) ([]string, error) {
+	var scenes []string
+	scenesPath := filepath.Join("projects", projectName, "scenes")
+	err := filepath.Walk(scenesPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() {
+			sceneFile, err := os.ReadFile(path)
+			if err != nil {
+				return err
+			}
+			scenes = append(scenes, string(sceneFile))
+		}
+		return nil
+	})
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return string(sceneFile), nil
+	return scenes, nil
 }
 
 func (a *App) CreateObject(objectName string, objectData string, projectName string) (string, error) {
