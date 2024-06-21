@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="objects"></div>
+        <div class="objects">
+            <button @click="createObj()">createObject</button>
+        </div>
         <div class="content-browser"></div>.
         <div class="inspector"></div>
         <canvas ref="scene" width="600" height="500"></canvas>
@@ -78,7 +80,7 @@ export default {
         createObj(objName, objData) {
             CreateObject(objName, objData, this.projectName)
                 .then(response => {
-                    console.log(respnose);
+                    console.log(response);
                 })
                 .catch(e => {
                     console.error("Error creating object:",e);
