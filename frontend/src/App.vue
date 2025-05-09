@@ -2,11 +2,14 @@
     <div class="ProjectSelector">
         <h1 v-if="!toggleNew && !engineUsed && !toggleEdit">Select Project</h1>
         <div class="ProjectsView" v-if="!toggleNew && !engineUsed && !toggleEdit">
-            <h3>Selected: {{ selectedProj }} <button @click="selectProject()">Unselect</button></h3>
             <ul>
                 <li v-for="project in projects" :key="project">
-                    <button class="ProjectContainButton" @click="selectProject(project)">{{ project.substring(2)
-                        }}</button>
+                    <button
+                        :class="['ProjectContainButton', { selected: selectedProj === project.substring(2) }]"
+                        @click="selectProject(project)"
+                    >
+                        {{ project.substring(2) }}
+                    </button>
                 </li>
             </ul>
         </div>
@@ -125,30 +128,30 @@ export default {
             
         },
         createProject() {
-                if (!this.toggleNew) {
+            if (!this.toggleNew) {
+                this.toggleNew = !this.toggleNew;
+            } else {
+
+                const newProjData = {
+                    name: `${this.selectedProjMode}${this.newProjName}`,
+                };
+
+                if (this.selectedProjMode || this.newProjName.length <= 1) {
+                    CreateProject(`${this.newProjName}${this.newProjName}`, newProjData)
+                        .then(response => {
+                            console.log("Project created successfully: ", response);
+                            this.projects.push(this.newProjName);
+                            this.selectedProj = "";
+                        })
+                        .catch(error => {
+                            console.error('Error creating project: ', error);
+                        })
                     this.toggleNew = !this.toggleNew;
+                    this.getProjects();
                 } else {
-
-                    const newProjData = {
-                        name: `${this.selectedProjMode}${this.newProjName}`,
-                    };
-
-                    if (this.selectedProjMode || this.newProjName.length <= 1) {
-                        CreateProject(`${this.newProjName}${this.newProjName}`, newProjData)
-                            .then(response => {
-                                console.log("Project created successfully: ", response);
-                                this.projects.push(this.newProjName);
-                                this.selectedProj = "";
-                            })
-                            .catch(error => {
-                                console.error('Error creating project: ', error);
-                            })
-                        this.toggleNew = !this.toggleNew;
-                        this.getProjects();
-                    } else {
-                        console.log("Error creating project");
-                    }
+                    console.log("Error creating project");
                 }
+            }
 
             console.log("create project");
         },

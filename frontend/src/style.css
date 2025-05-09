@@ -56,11 +56,22 @@ body {
 }
 
 .ProjectContainButton {
+    /* other existing styles */
+    padding: 8px 16px;
     cursor: pointer;
     border: none;
-    background: none;
-    font-size: 1rem;
-    color: black;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.ProjectContainButton:hover {
+    background-color: #f0f0f0;
+}
+
+.ProjectContainButton.selected {
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    background-color: #e7f1ff;
 }
 
 .ProjectsView {
@@ -79,6 +90,13 @@ body {
     cursor: pointer;
     background: none;
     font-size: large;
+}
+
+.selected-project {
+    border: 2px solid #000; /* Задайте цвет и толщину обводки */
+    padding: 10px; /* Отступы внутри обводки */
+    display: inline-block; /* Чтобы обводка не растягивалась на всю ширину */
+    margin-bottom: 10px; /* Отступ снизу */
 }
 
 .ProjectsView li {

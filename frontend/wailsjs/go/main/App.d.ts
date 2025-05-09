@@ -3,7 +3,7 @@
 
 export function CreateObject(arg1:string,arg2:string,arg3:string):Promise<string>;
 
-export function CreateProject(arg1:string,arg2:{[key: string]: any}):Promise<void>;
+export function CreateProject(arg1:string,arg2:Record<string, any>):Promise<void>;
 
 export function DeleteProject(arg1:string,arg2:string):Promise<void>;
 
